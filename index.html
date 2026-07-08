@@ -688,7 +688,7 @@ footer a:hover{color:var(--gold-light)}
 <p class="section-sub">Soluções entregues em ambientes corporativos reais, com foco em resultado de negócio.</p>
 <div class="projects-grid">
 
-<!-- Card PepsiCo Atualizado -->
+<!-- Card PepsiCo -->
 <div class="project-card reveal" onclick="openModal('pepsico')">
 <div class="project-top">
 <span class="project-company-badge">PepsiCo</span>
@@ -705,6 +705,23 @@ footer a:hover{color:var(--gold-light)}
 </div>
 </div>
 
+<!-- Card ABB -->
+<div class="project-card reveal" onclick="openModal('abb')">
+<div class="project-top">
+<span class="project-company-badge">ABB</span>
+<img alt="Aplicativo de Expedição ABB" src="ABB Romaneios 01.png"/>
+</div>
+<div class="project-body">
+<h3>Aplicações Corporativas Power Apps</h3>
+<p>Desenvolvimento de aplicação robusta para digitalização, controle de romaneios e automação do fluxo de carregamento na expedição.</p>
+<div class="project-techs">
+<span class="project-tech">Power Apps</span>
+<span class="project-tech">Dataverse</span>
+<span class="project-tech">Power Automate</span>
+</div>
+</div>
+</div>
+
 <div class="project-card reveal">
 <div class="project-top pt-2">
 <span class="project-emoji">⛏️</span>
@@ -716,22 +733,6 @@ footer a:hover{color:var(--gold-light)}
 <div class="project-techs">
 <span class="project-tech">Power BI</span>
 <span class="project-tech">Power Apps</span>
-</div>
-</div>
-</div>
-<div class="project-card reveal">
-<div class="project-top pt-3">
-<span class="project-emoji">⚡</span>
-<span class="project-company-badge">ABB</span>
-</div>
-<div class="project-body">
-<h3>Aplicações Corporativas Power Apps</h3>
-<p>Desenvolvimento de aplicações corporativas em Power Apps para digitalização de processos e automação de fluxos internos.</p>
-<div class="project-techs">
-<span class="project-tech">Power BI</span>
-<span class="project-tech">Power Apps</span>
-<span class="project-tech">Power Automate</span>
-<span class="project-tech">SharePoint</span>
 </div>
 </div>
 </div>
@@ -783,7 +784,7 @@ footer a:hover{color:var(--gold-light)}
 </div>
 </section>
 
-<!-- MODAL PEPSICO Atualizado -->
+<!-- MODAL PEPSICO -->
 <div class="modal" id="pepsicoModal">
 <div class="modal-box">
 <div class="close" onclick="closeModal()">×</div>
@@ -801,6 +802,38 @@ footer a:hover{color:var(--gold-light)}
 <div class="tag">DAX</div>
 <div class="tag">Power Query</div>
 <div class="tag">SQL</div>
+</div>
+</div>
+</div>
+
+<!-- MODAL ABB -->
+<div class="modal" id="abbModal">
+<div class="modal-box">
+<div class="close" onclick="closeModal()">×</div>
+<h2>ABB — Sistema de Expedição e Romaneios</h2>
+
+<!-- Imagem Principal -->
+<img class="modal-image" id="abbMainImage" src="ABB Romaneios 01.png" alt="Aplicativo ABB Expedição"/>
+
+<!-- Galeria de Miniaturas -->
+<div style="display: flex; gap: 10px; margin-top: -10px; margin-bottom: 20px;">
+  <img src="ABB Romaneios 01.png" alt="Tela 1" style="width: 80px; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid var(--blue);" onclick="changeAbbImage('ABB Romaneios 01.png', this)">
+  <img src="ABB Romaneios 02.png" alt="Tela 2" style="width: 80px; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid var(--border);" onclick="changeAbbImage('ABB Romaneios 02.png', this)">
+  <img src="ABB Romaneios 03.png" alt="Tela 3" style="width: 80px; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid var(--border);" onclick="changeAbbImage('ABB Romaneios 03.png', this)">
+</div>
+
+<h4>Contexto</h4>
+<p>Desenvolvimento de uma aplicação corporativa em Power Apps para a área de expedição da ABB, com o objetivo de centralizar e digitalizar o controle de saídas, carregamentos e fluxo de mercadorias.</p>
+<h4>Desafio</h4>
+<p>A operação dependia de processos manuais ou planilhas descentralizadas para gerenciar a liberação de cargas e o inventário de expedição. Isso gerava gargalos na comunicação entre o estoque e a transportadora, além de dificultar o rastreio de tempos de pátio e a emissão de relatórios de eficiência em tempo real.</p>
+<h4>Solução</h4>
+<p>Criação de um aplicativo robusto no Power Apps integrado ao Dataverse e Power Automate. A solução automatizou o fluxo de aprovação de carregamentos, permitiu o registro fotográfico e a validação de checklists de segurança direto por dispositivos móveis na doca, gerando alertas automáticos para a equipe de logística e consolidando os tempos de movimentação em um painel gerencial.</p>
+<h4>Tecnologias utilizadas</h4>
+<div class="tags">
+<div class="tag">Power Apps</div>
+<div class="tag">Dataverse</div>
+<div class="tag">Power Automate</div>
+<div class="tag">Power BI</div>
 </div>
 </div>
 </div>
@@ -925,16 +958,33 @@ function handleSubmit(e){
 function openModal(project){
   if(project === "pepsico"){
     document.getElementById("pepsicoModal").classList.add("active");
+  } else if(project === "abb"){
+    document.getElementById("abbModal").classList.add("active");
   }
 }
 
 function closeModal(){
   document.getElementById("pepsicoModal").classList.remove("active");
+  document.getElementById("abbModal").classList.remove("active");
+}
+
+// Controlar a troca de imagens na galeria da ABB
+function changeAbbImage(imageSrc, thumbnail) {
+  document.getElementById('abbMainImage').src = imageSrc;
+  
+  // Resetar bordas de todas as miniaturas no modal da ABB
+  const thumbs = thumbnail.parentElement.getElementsByTagName('img');
+  for (let img of thumbs) {
+    img.style.borderColor = 'var(--border)';
+  }
+  // Destacar a miniatura ativa
+  thumbnail.style.borderColor = 'var(--blue)';
 }
 
 window.onclick = function(event){
-  let modal = document.getElementById("pepsicoModal");
-  if(event.target === modal){
+  let pepsicoModal = document.getElementById("pepsicoModal");
+  let abbModal = document.getElementById("abbModal");
+  if(event.target === pepsicoModal || event.target === abbModal){
     closeModal();
   }
 }
