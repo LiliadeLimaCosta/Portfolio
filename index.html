@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -36,22 +37,13 @@ nav{
   color:var(--white);font-size:1.2rem;letter-spacing:0.02em;
 }
 .nav-brand span{color:var(--gold)}
-.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
 .nav-links a{
   color:rgba(255,255,255,0.65);text-decoration:none;
   font-size:0.82rem;font-weight:500;letter-spacing:0.06em;
   text-transform:uppercase;transition:color 0.2s;
 }
 .nav-links a:hover{color:var(--gold)}
-
-.nav-links a.linkedin-menu {
-  color: var(--gold);
-  font-weight: 700;
-}
-.nav-links a.linkedin-menu:hover {
-  color: var(--gold-light);
-}
-
 .nav-cta{
   background:var(--gold);color:var(--navy);
   padding:0.5rem 1.4rem;border-radius:6px;
@@ -120,6 +112,7 @@ nav{
 }
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
 
+/* Social proof logos */
 .hero-logos{
   margin-top:3rem;
   padding-top:2rem;
@@ -142,6 +135,7 @@ nav{
 .logo-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.3);border-color:rgba(201,168,76,0.5)}
 .logo-card img{height:26px;width:auto;max-width:100px;object-fit:contain;}
 
+/* Hero right — photo */
 .hero-right{
   position:relative;z-index:2;
   display:flex;justify-content:center;align-items:center;
@@ -163,13 +157,10 @@ nav{
 .photo-placeholder{
   position:relative;z-index:2;
   width:100%;height:100%;
-  background:none;
-  border:none;
   border-radius:12px;
   overflow:hidden;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
 }
-.photo-placeholder img{width:100%;height:100%;object-fit:cover;border-radius:12px}
 .photo-tag{
   position:absolute;bottom:-16px;left:30px;z-index:3;
   background:var(--gold);color:var(--navy);
@@ -293,6 +284,7 @@ section{padding:6rem 5%}
   height:100%;
   object-fit:cover;
 }
+.pt-1{background:linear-gradient(135deg,#0F1F3D,#1E3A5F)}
 .pt-2{background:linear-gradient(135deg,#1E3A5F,#2563EB)}
 .pt-3{background:linear-gradient(135deg,#1D4ED8,#3B82F6)}
 .pt-4{background:linear-gradient(135deg,#0F1F3D,#7C3AED)}
@@ -369,6 +361,20 @@ section{padding:6rem 5%}
   border-radius: 12px;
   border: 1px solid var(--border);
 }
+
+/* Ajuste para imagens de celular (Mobile/Portrait) sem cortes */
+.modal-image-portrait {
+  display: block;
+  max-height: 520px;
+  width: auto;
+  max-width: 100%;
+  margin: 15px auto 25px auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border);
+}
+
 .modal-box h4 {
   margin-top:20px;
   color:var(--blue);
@@ -455,23 +461,42 @@ section{padding:6rem 5%}
 
 /* ── FOOTER ── */
 footer{
-  background:var(--navy);padding:2rem 5%;
-  display:flex;justify-content:space-between;align-items:center;
-  border-top:1px solid rgba(255,255,255,0.08);
+  background:#07111F;
+  padding:1.8rem 5%;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+  border-top:1px solid rgba(201,168,76,0.1);
 }
-footer p{font-size:0.82rem;color:rgba(255,255,255,0.4)}
-footer a{color:var(--gold);text-decoration:none;font-size:0.82rem;font-weight:600}
-footer a:hover{color:var(--gold-light)}
+footer p{color:rgba(255,255,255,0.25);font-size:0.78rem}
+footer a{color:var(--gold);text-decoration:none;font-size:0.78rem;opacity:0.7;transition:opacity 0.2s}
+footer a:hover{opacity:1}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr;text-align:center;padding-top:7rem}
+  .hero-right{display:none}
+  .hero-desc{margin:0 auto 2.5rem}
+  .hero-actions{justify-content:center}
+  .logos-row{justify-content:center}
+  .about-grid,.contact-grid,.edu-grid{grid-template-columns:1fr;gap:2.5rem}
+  .about-metrics{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .nav-links,.nav-cta{display:none}
+  .about-metrics{grid-template-columns:1fr 1fr}
+  .hero-name{font-size:2.6rem}
+}
 </style>
 </head>
-<body>
+<body><a href="https://www.linkedin.com/" style="position:fixed;top:16px;right:16px;z-index:9999;background:#0A66C2;color:#fff;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.2);">🔗 LinkedIn</a>
 
-<!-- NAV -->
 <nav>
 <div class="nav-brand">Lilia <span>Costa</span></div>
 <ul class="nav-links">
 <li><a href="#about">Sobre</a></li>
-<li><a class="linkedin-menu" href="https://www.linkedin.com/in/" target="_blank">LinkedIn</a></li>
 <li><a href="#experience">Experiência</a></li>
 <li><a href="#projects">Projetos</a></li>
 <li><a href="#education">Formação</a></li>
@@ -480,7 +505,6 @@ footer a:hover{color:var(--gold-light)}
 <a class="nav-cta" href="mailto:liliagonsalves@hotmail.com.br">Contratar</a>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
 <div class="hero-bg-lines"></div>
 <div class="hero-left">
@@ -521,15 +545,14 @@ footer a:hover{color:var(--gold-light)}
 <div class="photo-frame">
 <div class="photo-bg-rect"></div>
 <div class="photo-accent"></div>
-<div class="photo-placeholder">
-<img alt="Lilia Costa" src="FotoLiliaPerfil.jpeg"/>
+<div class="photo-placeholder" style="background:none;border:none">
+<img alt="Lilia Costa" src="FotoLiliaPerfil.jpeg" style="width:100%;height:100%;object-fit:cover;border-radius:12px"/>
 </div>
 <div class="photo-tag">Power Platform · BI · Automação</div>
 </div>
 </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
 <div class="section-inner">
 <div class="about-grid">
@@ -586,7 +609,6 @@ footer a:hover{color:var(--gold-light)}
 </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
 <div class="section-inner">
 <p class="eyebrow">Trajetória</p>
@@ -628,7 +650,7 @@ footer a:hover{color:var(--gold-light)}
 <p class="timeline-company">Pepsico</p>
 <h3 class="timeline-role">Analista Power BI</h3>
 <p class="timeline-desc">
-          Desenvolvimento de Relatórios — utilizando Power BI e automação de bases, reduzindo o tempo de processamento de 12 horas para 2 horas.
+          Desenvolvimento de Relatórios — utilizando Power BI e automação de bases, reduzindo o tempo de processamento de 12 hours para 2 hours.
         </p>
 <div class="timeline-tags">
 <span class="timeline-tag">Power BI</span>
@@ -680,7 +702,6 @@ footer a:hover{color:var(--gold-light)}
 </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
 <div class="section-inner">
 <p class="eyebrow">Cases</p>
@@ -688,11 +709,10 @@ footer a:hover{color:var(--gold-light)}
 <p class="section-sub">Soluções entregues em ambientes corporativos reais, com foco em resultado de negócio.</p>
 <div class="projects-grid">
 
-<!-- Card PepsiCo -->
 <div class="project-card reveal" onclick="openModal('pepsico')">
 <div class="project-top">
 <span class="project-company-badge">PepsiCo</span>
-<img alt="Dashboard PepsiCo" src="Mockup Pepsico Mexico.png"/>
+<img class="modal-image" src="Mockup Pepsico Mexico.png" alt="Mockup Dashboard PepsiCo"/>
 </div>
 <div class="project-body">
 <h3>Dashboard Logístico End-to-End</h3>
@@ -701,23 +721,6 @@ footer a:hover{color:var(--gold-light)}
 <span class="project-tech">Power BI</span>
 <span class="project-tech">DAX</span>
 <span class="project-tech">Power Query</span>
-</div>
-</div>
-</div>
-
-<!-- Card ABB -->
-<div class="project-card reveal" onclick="openModal('abb')">
-<div class="project-top">
-<span class="project-company-badge">ABB</span>
-<img alt="Aplicativo de Expedição ABB" src="ABB Romaneios 01.png"/>
-</div>
-<div class="project-body">
-<h3>Aplicações Corporativas Power Apps</h3>
-<p>Desenvolvimento de aplicação robusta para digitalização, controle de romaneios e automação do fluxo de carregamento na expedição.</p>
-<div class="project-techs">
-<span class="project-tech">Power Apps</span>
-<span class="project-tech">Dataverse</span>
-<span class="project-tech">Power Automate</span>
 </div>
 </div>
 </div>
@@ -736,6 +739,23 @@ footer a:hover{color:var(--gold-light)}
 </div>
 </div>
 </div>
+
+<div class="project-card reveal" onclick="openModal('abb')">
+<div class="project-top">
+<span class="project-company-badge">ABB</span>
+<img alt="Aplicativo de Expedição ABB" src="ABB Romaneios 01.jpg"/>
+</div>
+<div class="project-body">
+<h3>Aplicações Corporativas Power Apps</h3>
+<p>Desenvolvimento de aplicação robusta para digitalização, controle de romaneios e automação do fluxo de carregamento na expedição.</p>
+<div class="project-techs">
+<span class="project-tech">Power Apps</span>
+<span class="project-tech">Dataverse</span>
+<span class="project-tech">Power Automate</span>
+</div>
+</div>
+</div>
+
 <div class="project-card reveal">
 <div class="project-top pt-4">
 <span class="project-emoji">🧪</span>
@@ -750,6 +770,7 @@ footer a:hover{color:var(--gold-light)}
 </div>
 </div>
 </div>
+
 <div class="project-card reveal">
 <div class="project-top pt-5">
 <span class="project-emoji">📊</span>
@@ -760,11 +781,12 @@ footer a:hover{color:var(--gold-light)}
 <p>Desenvolvimento de dashboards interativos em Tableau para monitoramento de indicadores de negócio.</p>
 <div class="project-techs">
 <span class="project-tech">Tableau</span>
-<span class="skill-chip">SQL</span>
+<span class="project-tech">SQL</span>
 <span class="project-tech">BigQuery</span>
 </div>
 </div>
 </div>
+
 <div class="project-card reveal">
 <div class="project-top pt-6">
 <span class="project-emoji">🔋</span>
@@ -780,11 +802,11 @@ footer a:hover{color:var(--gold-light)}
 </div>
 </div>
 </div>
+
 </div>
 </div>
 </section>
 
-<!-- MODAL PEPSICO -->
 <div class="modal" id="pepsicoModal">
 <div class="modal-box">
 <div class="close" onclick="closeModal()">×</div>
@@ -806,20 +828,17 @@ footer a:hover{color:var(--gold-light)}
 </div>
 </div>
 
-<!-- MODAL ABB -->
 <div class="modal" id="abbModal">
 <div class="modal-box">
 <div class="close" onclick="closeModal()">×</div>
 <h2>ABB — Sistema de Expedição e Romaneios</h2>
 
-<!-- Imagem Principal -->
-<img class="modal-image" id="abbMainImage" src="ABB Romaneios 01.png" alt="Aplicativo ABB Expedição"/>
+<img class="modal-image-portrait" id="abbMainImage" src="ABB Romaneios 01.jpg" alt="Aplicativo ABB Expedição"/>
 
-<!-- Galeria de Miniaturas -->
-<div style="display: flex; gap: 10px; margin-top: -10px; margin-bottom: 20px;">
-  <img src="ABB Romaneios 01.png" alt="Tela 1" style="width: 80px; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid var(--blue);" onclick="changeAbbImage('ABB Romaneios 01.png', this)">
-  <img src="ABB Romaneios 02.png" alt="Tela 2" style="width: 80px; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid var(--border);" onclick="changeAbbImage('ABB Romaneios 02.png', this)">
-  <img src="ABB Romaneios 03.png" alt="Tela 3" style="width: 80px; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid var(--border);" onclick="changeAbbImage('ABB Romaneios 03.png', this)">
+<div style="display: flex; gap: 10px; justify-content: center; margin-top: -15px; margin-bottom: 25px;">
+  <img src="ABB Romaneios 01.jpg" alt="Tela 1" style="width: 50px; height: 75px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid var(--blue);" onclick="changeAbbImage('ABB Romaneios 01.jpg', this)">
+  <img src="ABB Romaneios 02.jpg" alt="Tela 2" style="width: 50px; height: 75px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid var(--border);" onclick="changeAbbImage('ABB Romaneios 02.jpg', this)">
+  <img src="ABB Romaneios 03.jpg" alt="Tela 3" style="width: 50px; height: 75px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid var(--border);" onclick="changeAbbImage('ABB Romaneios 03.jpg', this)">
 </div>
 
 <h4>Contexto</h4>
@@ -838,7 +857,6 @@ footer a:hover{color:var(--gold-light)}
 </div>
 </div>
 
-<!-- EDUCATION -->
 <section id="education">
 <div class="section-inner">
 <p class="eyebrow">Formação</p>
@@ -881,7 +899,6 @@ footer a:hover{color:var(--gold-light)}
 </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
 <div class="section-inner">
 <div class="contact-grid">
@@ -931,7 +948,6 @@ footer a:hover{color:var(--gold-light)}
 </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
 <p>© 2025 Lilia Costa · Power Platform &amp; Business Intelligence</p>
 <a href="https://www.linkedin.com/in/" target="_blank">LinkedIn →</a>
