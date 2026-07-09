@@ -278,7 +278,7 @@ section{padding:6rem 5%}
   border:1px solid var(--border);
   border-radius:16px;overflow:hidden;
   transition:all 0.25s;
-  cursor:pointer;
+  cursor:default; /* Alterado de pointer para default já que não há clique */
 }
 .project-card:hover{
   border-color:#93C5FD;
@@ -319,100 +319,6 @@ section{padding:6rem 5%}
 .project-tech{
   background:var(--light);color:#1D4ED8;
   font-size:0.7rem;font-weight:600;padding:0.2rem 0.55rem;border-radius:3px;
-}
-
-/* ── MODAL DE PROJETOS ── */
-.modal {
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(15, 31, 61, 0.7);
-  backdrop-filter: blur(4px);
-  z-index:2000;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-}
-.modal.active {
-  display:flex;
-}
-.modal-box {
-  background:var(--white);
-  max-width:700px;
-  width:100%;
-  border-radius:20px;
-  padding:40px;
-  position:relative;
-  max-height:90vh;
-  overflow:auto;
-  border: 1px solid var(--border);
-  box-shadow: 0 20px 50px rgba(15, 31, 61, 0.3);
-}
-.close {
-  position:absolute;
-  right:25px;
-  top:20px;
-  font-size:30px;
-  cursor:pointer;
-  color:var(--gray);
-  transition: color 0.2s;
-}
-.close:hover {
-  color: var(--text);
-}
-.modal-box h2 {
-  font-family:'DM Serif Display',serif;
-  font-size:2.2rem;
-  color:var(--navy);
-  margin-bottom: 1rem;
-}
-.modal-image {
-  width:100%;
-  max-height: 350px;
-  object-fit: cover;
-  margin: 15px 0 20px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-}
-
-.modal-image-portrait {
-  display: block;
-  max-height: 520px;
-  width: auto;
-  max-width: 100%;
-  margin: 15px auto 25px auto;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  border: 1px solid var(--border);
-}
-
-.modal-box h4 {
-  margin-top:20px;
-  color:var(--blue);
-  font-size: 1.05rem;
-  font-weight: 700;
-}
-.modal-box p {
-  margin-top:8px;
-  color:var(--gray);
-  line-height:1.7;
-  font-size: 0.95rem;
-}
-.modal-box .tags {
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:12px;
-}
-.modal-box .tag {
-  padding:5px 12px;
-  background:var(--light);
-  border: 1px solid #BFDBFE;
-  border-radius:6px;
-  font-size:12px;
-  color:#1D4ED8;
-  font-weight: 600;
 }
 
 /* ── EDUCATION & CERTS ── */
@@ -525,7 +431,7 @@ footer a:hover{opacity:1}
 <h1 class="hero-name">Lilia<br/><em>Costa</em></h1>
 <p class="hero-title">Analista Power Platform &amp; Automação de Processos</p>
 <p class="hero-desc">
-      Especialista em BI e automação com experience em grandes empresas como
+      Especialista em BI e automação com experiência em grandes empresas como
       Pepsico, Vale, Bayer e Accenture. Transformo dados complexos em decisões
       estratégicas e processos lentos em fluxos eficientes.
     </p>
@@ -540,7 +446,7 @@ footer a:hover{opacity:1}
 <div class="logo-card"><img alt="Bayer" src="logo-bayer.png"/></div>
 <div class="logo-card"><img alt="Accenture" src="logo-accenture.png"/></div>
 <div class="logo-card"><img alt="ABB" src="logo-abb.png"/></div>
-<div class="logo-card"><img alt="AdsTigre" src="logo-adstgire.png"/></div>
+<div class="logo-card"><img alt="AdsTigre" src="logo-adstigre.png"/></div>
 </div>
 </div>
 </div>
@@ -704,7 +610,6 @@ footer a:hover{opacity:1}
 </div>
 </div>
 </section>
-
 <section id="projects">
 <div class="section-inner">
 <p class="eyebrow">Cases</p>
@@ -712,7 +617,7 @@ footer a:hover{opacity:1}
 <p class="section-sub">Soluções entregues em ambientes corporativos reais, com foco em resultado de negócio.</p>
 <div class="projects-grid">
 
-<div class="project-card reveal" onclick="openModal('pepsico')">
+<div class="project-card reveal">
 <div class="project-top">
 <span class="project-company-badge">PepsiCo</span>
 <img class="project-logo-main" src="Logo Pepsico.jpg" alt="Logo PepsiCo"/>
@@ -743,7 +648,7 @@ footer a:hover{opacity:1}
 </div>
 </div>
 
-<div class="project-card reveal" onclick="openModal('abb')">
+<div class="project-card reveal">
 <div class="project-top">
 <span class="project-company-badge">ABB</span>
 <img class="project-logo-main" src="logo-abb.png" alt="Logo ABB"/>
@@ -809,55 +714,6 @@ footer a:hover{opacity:1}
 </div>
 </div>
 </section>
-<div class="modal" id="pepsicoModal">
-<div class="modal-box">
-<div class="close" onclick="closeModal()">×</div>
-<h2>PepsiCo México — Dashboard Logístico End-to-End</h2>
-<img class="modal-image" src="Mockup Pepsico Mexico.png" alt="Mockup Dashboard PepsiCo"/>
-<h4>Contexto</h4>
-<p>Projeto desenvolvido para transformar dados operacionais em uma visão estratégica de acompanhamento logístico, permitindo maior visibilidade dos indicadores e suporte à tomada de decisão.</p>
-<h4>Desafio</h4>
-<p>Consolidar informações de diferentes fontes e apresentar uma visão simples, executiva e intuitiva para acompanhamento dos principais indicadores.</p>
-<h4>Solução</h4>
-<p>Construção de dashboard analítico com foco em experiência do usuário, indicadores de performance e navegação visual, utilizando recursos avançados de Business Intelligence.</p>
-<h4>Tecnologias utilizadas</h4>
-<div class="tags">
-<div class="tag">Power BI</div>
-<div class="tag">DAX</div>
-<div class="tag">Power Query</div>
-<div class="tag">SQL</div>
-</div>
-</div>
-</div>
-
-<div class="modal" id="abbModal">
-<div class="modal-box">
-<div class="close" onclick="closeModal()">×</div>
-<h2>ABB — Sistema de Expedição e Romaneios</h2>
-
-<img class="modal-image-portrait" id="abbMainImage" src="ABB Romaneios 01.png" alt="Aplicativo ABB Expedição"/>
-  
-<div style="display: flex; gap: 10px; justify-content: center; margin-top: -15px; margin-bottom: 25px;">
-  <img src="ABB Romaneios 01.png" alt="Tela 1" style="width: 50px; height: 75px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid var(--blue);" onclick="changeAbbImage('ABB Romaneios 01.png', this)">
-  <img src="ABB Romaneios 02.png" alt="Tela 2" style="width: 50px; height: 75px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid var(--border);" onclick="changeAbbImage('ABB Romaneios 02.png', this)">
-  <img src="ABB Romaneios 03.png" alt="Tela 3" style="width: 50px; height: 75px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid var(--border);" onclick="changeAbbImage('ABB Romaneios 03.png', this)">
-</div>
-
-<h4>Contexto</h4>
-<p>Desenvolvimento de uma aplicação corporativa em Power Apps para a área de expedição da ABB, com o objetivo de centralizar e digitalizar o controle de saídas, carregamentos e fluxo de mercadorias.</p>
-<h4>Desafio</h4>
-<p>A operação dependia de processos manuais ou planilhas descentralizadas para gerenciar a liberação de cargas e o inventário de expedição. Isso gerava gargalos na comunicação entre o estoque e a transportadora, além de dificultar o rastreio de tempos de pátio e a emissão de relatórios de eficiência em tempo real.</p>
-<h4>Solução</h4>
-<p>Criação de um aplicativo robusto no Power Apps integrado ao Dataverse e Power Automate. A solução automatizou o fluxo de aprovação de carregamentos, permitiu o registro fotográfico e a validação de checklists de segurança direto por dispositivos móveis na doca, gerando alertas automáticos para a equipe de logística e consolidando os tempos de movimentação em um painel gerencial.</p>
-<h4>Tecnologias utilizadas</h4>
-<div class="tags">
-<div class="tag">Power Apps</div>
-<div class="tag">Dataverse</div>
-<div class="tag">Power Automate</div>
-<div class="tag">Power BI</div>
-</div>
-</div>
-</div>
 
 <section id="education">
 <div class="section-inner">
@@ -953,7 +809,7 @@ footer a:hover{opacity:1}
 
 <footer>
 <p>© 2025 Lilia Costa · Power Platform &amp; Business Intelligence</p>
-<a href="https://www.linkedin.com/" target="_blank">LinkedIn →</a>
+<a href="s://www.linkedin.com/in/lilia-costa-a44a9612a/" target="_blank">LinkedIn →</a>
 </footer>
 
 <script>
@@ -971,43 +827,6 @@ function handleSubmit(e){
   btn.textContent = 'Mensagem enviada ✓'
   btn.style.background = '#059669'
   setTimeout(()=>{ btn.textContent = orig; btn.style.background = ''; e.target.reset() },3000)
-}
-
-// Funções do Modal de Projetos
-function openModal(project){
-  if(project === "pepsico"){
-    document.getElementById("pepsicoModal").classList.add("active");
-  } else if(project === "abb") {
-    document.getElementById("abbModal").classList.add("active");
-  }
-}
-
-function closeModal(){
-  const pepsicoModal = document.getElementById("pepsicoModal");
-  const abbModal = document.getElementById("abbModal");
-  if(pepsicoModal) pepsicoModal.classList.remove("active");
-  if(abbModal) abbModal.classList.remove("active");
-}
-
-// Controlar a troca de imagens na galeria da ABB
-function changeAbbImage(imageSrc, thumbnail) {
-  document.getElementById('abbMainImage').src = imageSrc;
-  
-  // Resetar bordas de todas as miniaturas no modal da ABB
-  const thumbs = thumbnail.parentElement.getElementsByTagName('img');
-  for (let img of thumbs) {
-    img.style.borderColor = 'var(--border)';
-  }
-  // Destacar a miniatura ativa
-  thumbnail.style.borderColor = 'var(--blue)';
-}
-
-window.onclick = function(event){
-  let pepsicoModal = document.getElementById("pepsicoModal");
-  let abbModal = document.getElementById("abbModal");
-  if(event.target === pepsicoModal || event.target === abbModal){
-    closeModal();
-  }
 }
 </script>
 </body>
